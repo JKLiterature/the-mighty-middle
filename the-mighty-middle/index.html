@@ -3,11 +3,11 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="A comprehensive web-based tool for organizing and tracking academic literature for research projects">
-    <meta name="keywords" content="literature review, academic research, bibliography, citation management">
-    <meta name="author" content="Literature Review Tracker">
+    <meta name="description" content="The Mighty Middle: Literature Review Tracker for dissertation research on model minority myth and solid middle Asian American experiences">
+    <meta name="keywords" content="literature review, academic research, bibliography, citation management, model minority myth, Asian American studies">
+    <meta name="author" content="The Mighty Middle Literature Review Tracker">
     
-    <title>Literature Review Tracker</title>
+    <title>The Mighty Middle - Literature Review Tracker</title>
     
     <!-- CSS -->
     <link rel="stylesheet" href="css/styles.css">
@@ -17,19 +17,39 @@
 </head>
 <body>
     <header class="header">
-        <h1>Literature Review Tracker</h1>
-        <p>Organize and track academic literature for your research projects</p>
+        <h1>The Mighty Middle</h1>
+        <p>Literature Review Tracker for Model Minority Myth Research</p>
     </header>
     
     <main>
         <section class="research-questions" aria-labelledby="research-question-heading">
-            <h2 id="research-question-heading">Primary Research Question</h2>
-            <div contenteditable="true" class="editable-question" role="textbox" aria-label="Edit your research question">
-                Enter your primary research question here...
+            <h2 id="research-question-heading">🎯 Guiding Research Question</h2>
+            <div class="fixed-question">
+                <blockquote>
+                    "How have I experienced, internalized, navigated, and resisted the model minority myth as an Asian American professional with a 'solid' rather than 'spectacular' achievement record, and what does this reveal about how domains of power operate for the majority of Asian Americans in professional contexts?"
+                </blockquote>
             </div>
-            <button onclick="saveResearchQuestion()" class="save-question-btn" aria-label="Save research question">
-                Save Question
-            </button>
+            <div class="research-focus">
+                <h3>Key Research Areas</h3>
+                <div class="focus-grid">
+                    <div class="focus-item">
+                        <strong>Model Minority Myth</strong>
+                        <p>Impact on "solid middle" achievers</p>
+                    </div>
+                    <div class="focus-item">
+                        <strong>Collins' Domains of Power</strong>
+                        <p>Structural, disciplinary, cultural, interpersonal</p>
+                    </div>
+                    <div class="focus-item">
+                        <strong>Professional Navigation</strong>
+                        <p>Strategies beyond exceptional credentials</p>
+                    </div>
+                    <div class="focus-item">
+                        <strong>Asian American Experience</strong>
+                        <p>Autoethnographic methodology</p>
+                    </div>
+                </div>
+            </div>
         </section>
         
         <section class="controls" aria-labelledby="controls-heading">
@@ -92,6 +112,10 @@
                 <table id="literatureTable" role="table">
                     <thead>
                         <tr role="row">
+                            <th scope="col" style="width: 200px;">Citation</th>
+                            <th scope="col" style="width: 100px;">Year</th>
+                            <th scope="col" style="width: 120px;">Type</th>
+                            <th scope="col" style="width: 150px;">Theoretical Framework</th>
                             <th scope="col" style="width: 100px;">Relevance to Research</th>
                             <th scope="col" style="width: 150px;">Connection to Research Question</th>
                             <th scope="col" style="width: 200px;">Key Concepts/Findings</th>
@@ -169,9 +193,9 @@
     </main>
     
     <footer>
-        <p>&copy; 2025 Literature Review Tracker. Open source project under MIT License.</p>
+        <p>&copy; 2025 The Mighty Middle - Literature Review Tracker. Open source project under MIT License.</p>
         <p>
-            <a href="https://github.com/yourusername/literature-review-tracker" target="_blank" rel="noopener">
+            <a href="https://github.com/yourusername/the-mighty-middle" target="_blank" rel="noopener">
                 View on GitHub
             </a> | 
             <a href="docs/user-guide.md" target="_blank">User Guide</a> | 
@@ -202,8 +226,4 @@
         }
     </script>
 </body>
-</html> style="width: 200px;">Citation</th>
-                            <th scope="col" style="width: 100px;">Year</th>
-                            <th scope="col" style="width: 120px;">Type</th>
-                            <th scope="col" style="width: 150px;">Theoretical Framework</th>
-                            <th scope="col"
+</html>
