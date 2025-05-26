@@ -1,0 +1,589 @@
+/* Literature Review Tracker - Main Styles */
+
+/* CSS Custom Properties */
+:root {
+    --primary-color: #667eea;
+    --secondary-color: #764ba2;
+    --accent-color: #38a169;
+    --danger-color: #e53e3e;
+    --warning-color: #dd6b20;
+    --success-color: #38a169;
+    
+    --bg-primary: #ffffff;
+    --bg-secondary: #f8f9fa;
+    --bg-accent: #f0fff4;
+    
+    --text-primary: #2d3748;
+    --text-secondary: #4a5568;
+    --text-muted: #718096;
+    
+    --border-color: #e2e8f0;
+    --border-radius: 8px;
+    --border-radius-sm: 4px;
+    --border-radius-lg: 12px;
+    
+    --spacing-xs: 4px;
+    --spacing-sm: 8px;
+    --spacing-md: 16px;
+    --spacing-lg: 24px;
+    --spacing-xl: 32px;
+    
+    --shadow-sm: 0 1px 3px rgba(0, 0, 0, 0.1);
+    --shadow-md: 0 2px 4px rgba(0, 0, 0, 0.1);
+    --shadow-lg: 0 4px 8px rgba(0, 0, 0, 0.1);
+    
+    --font-size-sm: 12px;
+    --font-size-base: 14px;
+    --font-size-lg: 16px;
+    --font-size-xl: 18px;
+    --font-size-2xl: 24px;
+    
+    --font-weight-normal: 400;
+    --font-weight-medium: 500;
+    --font-weight-semibold: 600;
+    --font-weight-bold: 700;
+    
+    --transition-base: 0.3s ease;
+}
+
+/* Dark Mode Support */
+@media (prefers-color-scheme: dark) {
+    :root {
+        --bg-primary: #1a202c;
+        --bg-secondary: #2d3748;
+        --bg-accent: #1a2e1a;
+        
+        --text-primary: #e2e8f0;
+        --text-secondary: #cbd5e0;
+        --text-muted: #a0aec0;
+        
+        --border-color: #4a5568;
+    }
+}
+
+/* Reset and Base Styles */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background-color: var(--bg-secondary);
+    color: var(--text-primary);
+    line-height: 1.6;
+    font-size: var(--font-size-base);
+}
+
+/* Accessibility */
+.sr-only {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    padding: 0;
+    margin: -1px;
+    overflow: hidden;
+    clip: rect(0, 0, 0, 0);
+    white-space: nowrap;
+    border: 0;
+}
+
+/* Focus Management */
+*:focus {
+    outline: 2px solid var(--primary-color);
+    outline-offset: 2px;
+}
+
+/* Typography */
+h1, h2, h3, h4, h5, h6 {
+    font-weight: var(--font-weight-semibold);
+    line-height: 1.2;
+    margin-bottom: var(--spacing-md);
+}
+
+h1 { font-size: var(--font-size-2xl); }
+h2 { font-size: var(--font-size-xl); }
+h3 { font-size: var(--font-size-lg); }
+
+/* Layout Components */
+.header {
+    background: linear-gradient(135deg, var(--primary-color) 0%, var(--secondary-color) 100%);
+    color: white;
+    padding: var(--spacing-xl);
+    border-radius: var(--border-radius);
+    margin-bottom: var(--spacing-lg);
+    text-align: center;
+}
+
+.header h1 {
+    margin-bottom: var(--spacing-sm);
+}
+
+.header p {
+    opacity: 0.9;
+    font-size: var(--font-size-lg);
+}
+
+/* Main Content */
+main {
+    max-width: 1400px;
+    margin: 0 auto;
+    padding: 0 var(--spacing-lg);
+}
+
+/* Research Questions Section */
+.research-questions {
+    background: var(--bg-accent);
+    border-left: 4px solid var(--accent-color);
+    padding: var(--spacing-lg);
+    margin-bottom: var(--spacing-lg);
+    border-radius: 0 var(--border-radius) var(--border-radius) 0;
+}
+
+.research-questions h2 {
+    margin-top: 0;
+    color: var(--accent-color);
+    margin-bottom: var(--spacing-md);
+}
+
+.editable-question {
+    background: var(--bg-primary);
+    border: 2px solid var(--border-color);
+    border-radius: var(--border-radius-sm);
+    padding: var(--spacing-md);
+    margin-bottom: var(--spacing-md);
+    min-height: 60px;
+    font-style: italic;
+    transition: border-color var(--transition-base);
+}
+
+.editable-question:focus {
+    border-color: var(--primary-color);
+    font-style: normal;
+}
+
+.editable-question:empty::before {
+    content: "Enter your primary research question here...";
+    color: var(--text-muted);
+}
+
+/* Controls Section */
+.controls {
+    background: var(--bg-primary);
+    padding: var(--spacing-lg);
+    border-radius: var(--border-radius);
+    margin-bottom: var(--spacing-lg);
+    box-shadow: var(--shadow-md);
+}
+
+.filter-section {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: var(--spacing-md);
+    margin-bottom: var(--spacing-md);
+}
+
+.filter-section label {
+    font-weight: var(--font-weight-medium);
+    color: var(--text-secondary);
+}
+
+/* Form Elements */
+input, select, textarea, button {
+    padding: var(--spacing-sm) var(--spacing-md);
+    border: 1px solid var(--border-color);
+    border-radius: var(--border-radius-sm);
+    font-size: var(--font-size-base);
+    transition: border-color var(--transition-base), box-shadow var(--transition-base);
+}
+
+input:focus, select:focus, textarea:focus {
+    border-color: var(--primary-color);
+    box-shadow: 0 0 0 3px rgba(102, 126, 234, 0.1);
+}
+
+/* Buttons */
+button {
+    background-color: var(--primary-color);
+    color: white;
+    border: none;
+    cursor: pointer;
+    font-weight: var(--font-weight-medium);
+    transition: background-color var(--transition-base), transform var(--transition-base);
+}
+
+button:hover {
+    background-color: var(--secondary-color);
+    transform: translateY(-1px);
+}
+
+button:active {
+    transform: translateY(0);
+}
+
+.secondary-btn {
+    background-color: var(--text-muted) !important;
+}
+
+.secondary-btn:hover {
+    background-color: var(--text-secondary) !important;
+}
+
+.primary-btn {
+    background-color: var(--accent-color) !important;
+}
+
+.primary-btn:hover {
+    background-color: var(--success-color) !important;
+}
+
+.save-question-btn {
+    background-color: var(--accent-color);
+    font-size: var(--font-size-sm);
+    padding: var(--spacing-sm) var(--spacing-md);
+}
+
+/* Statistics Section */
+.stats {
+    background: var(--bg-primary);
+    padding: var(--spacing-lg);
+    border-radius: var(--border-radius);
+    margin-bottom: var(--spacing-lg);
+    box-shadow: var(--shadow-md);
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: var(--spacing-lg);
+}
+
+.stat-item {
+    text-align: center;
+    padding: var(--spacing-md);
+}
+
+.stat-number {
+    font-size: var(--font-size-2xl);
+    font-weight: var(--font-weight-bold);
+    color: var(--primary-color);
+    margin-bottom: var(--spacing-sm);
+}
+
+/* Table Styles */
+.table-container {
+    background: var(--bg-primary);
+    border-radius: var(--border-radius);
+    overflow: hidden;
+    box-shadow: var(--shadow-md);
+    margin-bottom: var(--spacing-lg);
+}
+
+.table-wrapper {
+    overflow-x: auto;
+    max-height: 600px;
+    overflow-y: auto;
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: var(--font-size-base);
+}
+
+th {
+    background: linear-gradient(135deg, var(--primary-color) 0%, var(--secondary-color) 100%);
+    color: white;
+    padding: var(--spacing-md) var(--spacing-sm);
+    text-align: left;
+    font-weight: var(--font-weight-semibold);
+    position: sticky;
+    top: 0;
+    z-index: 10;
+    white-space: nowrap;
+}
+
+td {
+    padding: var(--spacing-md) var(--spacing-sm);
+    border-bottom: 1px solid var(--border-color);
+    vertical-align: top;
+}
+
+tr:hover {
+    background-color: rgba(102, 126, 234, 0.05);
+}
+
+.citation {
+    font-weight: var(--font-weight-semibold);
+    color: var(--text-primary);
+}
+
+/* Relevance Indicators */
+.relevance-high { 
+    color: var(--danger-color); 
+    font-weight: var(--font-weight-bold); 
+}
+
+.relevance-medium { 
+    color: var(--warning-color); 
+    font-weight: var(--font-weight-bold); 
+}
+
+.relevance-low { 
+    color: var(--accent-color); 
+}
+
+/* Framework Tags */
+.framework-tag {
+    display: inline-block;
+    padding: var(--spacing-xs) var(--spacing-sm);
+    border-radius: var(--border-radius-lg);
+    font-size: var(--font-size-sm);
+    font-weight: var(--font-weight-medium);
+    margin: 2px;
+    white-space: nowrap;
+}
+
+.collins { 
+    background-color: #e6fffa; 
+    color: #00695c; 
+}
+
+.asiancrit { 
+    background-color: #fef5e7; 
+    color: #c05621; 
+}
+
+.mmm { 
+    background-color: #edf2f7; 
+    color: #4a5568; 
+}
+
+.autoethnography { 
+    background-color: #f0fff4; 
+    color: #22543d; 
+}
+
+.intersectionality { 
+    background-color: #faf5ff; 
+    color: #553c9a; 
+}
+
+/* Notes and Content */
+.notes-cell {
+    max-width: 200px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+.expandable {
+    cursor: pointer;
+    color: var(--primary-color);
+    text-decoration: underline;
+}
+
+/* Add Row Styles */
+.add-row {
+    background-color: var(--bg-secondary);
+    border-top: 2px solid var(--border-color);
+}
+
+.add-row input, .add-row select, .add-row textarea {
+    width: 100%;
+    font-size: var(--font-size-sm);
+    border: 1px solid var(--border-color);
+    background-color: var(--bg-primary);
+}
+
+.add-row textarea {
+    height: 60px;
+    resize: vertical;
+    font-family: inherit;
+}
+
+/* Export Section */
+.export-section {
+    background: var(--bg-primary);
+    padding: var(--spacing-lg);
+    border-radius: var(--border-radius);
+    margin-bottom: var(--spacing-lg);
+    box-shadow: var(--shadow-md);
+    text-align: center;
+}
+
+.export-section h2 {
+    margin-bottom: var(--spacing-lg);
+}
+
+.export-buttons {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: var(--spacing-md);
+    margin-bottom: var(--spacing-md);
+}
+
+.export-help {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: var(--spacing-sm);
+    margin-top: var(--spacing-md);
+}
+
+.help-text {
+    color: var(--text-muted);
+    font-size: var(--font-size-sm);
+    display: block;
+    margin-top: var(--spacing-xs);
+}
+
+/* Footer */
+footer {
+    background: var(--bg-primary);
+    padding: var(--spacing-lg);
+    border-radius: var(--border-radius);
+    margin-top: var(--spacing-lg);
+    text-align: center;
+    color: var(--text-secondary);
+    box-shadow: var(--shadow-md);
+}
+
+footer a {
+    color: var(--primary-color);
+    text-decoration: none;
+    transition: color var(--transition-base);
+}
+
+footer a:hover {
+    color: var(--secondary-color);
+    text-decoration: underline;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    main {
+        padding: 0 var(--spacing-md);
+    }
+    
+    .header {
+        padding: var(--spacing-lg) var(--spacing-md);
+    }
+    
+    .filter-section {
+        flex-direction: column;
+        align-items: stretch;
+    }
+    
+    .filter-section label {
+        margin-bottom: var(--spacing-xs);
+    }
+    
+    .stats {
+        grid-template-columns: repeat(2, 1fr);
+    }
+    
+    .export-buttons {
+        flex-direction: column;
+    }
+    
+    .export-help {
+        grid-template-columns: 1fr;
+    }
+    
+    table {
+        font-size: var(--font-size-sm);
+    }
+    
+    th, td {
+        padding: var(--spacing-sm) var(--spacing-xs);
+    }
+}
+
+@media (max-width: 480px) {
+    .stats {
+        grid-template-columns: 1fr;
+    }
+    
+    .stat-number {
+        font-size: var(--font-size-xl);
+    }
+    
+    .header h1 {
+        font-size: var(--font-size-xl);
+    }
+    
+    .research-questions {
+        padding: var(--spacing-md);
+    }
+    
+    .controls, .export-section {
+        padding: var(--spacing-md);
+    }
+}
+
+/* Print Styles */
+@media print {
+    body {
+        background: white;
+        color: black;
+    }
+    
+    .controls, .export-section, footer {
+        display: none;
+    }
+    
+    .header {
+        background: white;
+        color: black;
+        border: 2px solid black;
+    }
+    
+    table {
+        font-size: 10px;
+    }
+    
+    .framework-tag {
+        border: 1px solid black;
+        background: white;
+        color: black;
+    }
+}
+
+/* Animation Classes */
+.fade-in {
+    animation: fadeIn 0.3s ease-in;
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(10px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+.slide-in {
+    animation: slideIn 0.3s ease-out;
+}
+
+@keyframes slideIn {
+    from { transform: translateX(-20px); opacity: 0; }
+    to { transform: translateX(0); opacity: 1; }
+}
+
+/* Loading States */
+.loading {
+    opacity: 0.6;
+    pointer-events: none;
+}
+
+.spinner {
+    display: inline-block;
+    width: 20px;
+    height: 20px;
+    border: 3px solid rgba(255, 255, 255, 0.3);
+    border-radius: 50%;
+    border-top-color: white;
+    animation: spin 1s ease-in-out infinite;
+}
+
+@keyframes spin {
+    to { transform: rotate(360deg); }
+}

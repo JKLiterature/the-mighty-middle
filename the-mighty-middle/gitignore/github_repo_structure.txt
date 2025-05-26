@@ -1,0 +1,161 @@
+# Literature Review Tracker
+
+A comprehensive web-based tool for organizing and tracking academic literature for research projects, with specialized features for interdisciplinary studies.
+
+## 🎯 Features
+
+- **Smart Organization**: Categorize sources by theoretical framework, research relevance, and publication type
+- **Advanced Filtering**: Filter by framework, relevance level, or search across all fields
+- **Research Integration**: Direct connection tracking to specific research questions
+- **Visual Framework Tags**: Color-coded tags for quick theoretical framework identification
+- **Export Capabilities**: CSV export, bibliography generation, and research gap analysis
+- **Real-time Statistics**: Track source distribution and identify research gaps
+- **Responsive Design**: Works on desktop, tablet, and mobile devices
+
+## 🚀 Quick Start
+
+1. **Clone the repository**:
+   ```bash
+   git clone https://github.com/yourusername/literature-review-tracker.git
+   cd literature-review-tracker
+   ```
+
+2. **Open the application**:
+   ```bash
+   # Simply open index.html in your web browser
+   open index.html
+   # Or start a local server
+   python -m http.server 8000
+   ```
+
+3. **Start tracking your literature**:
+   - Add your research question at the top
+   - Begin adding sources using the form at the bottom
+   - Use filters to organize and analyze your collection
+
+## 📁 Repository Structure
+
+```
+literature-review-tracker/
+├── README.md                 # This file
+├── LICENSE                   # MIT License
+├── index.html               # Main application file
+├── css/
+│   └── styles.css          # Separated CSS styles
+├── js/
+│   ├── app.js              # Main application logic
+│   ├── filters.js          # Filtering functionality
+│   └── export.js           # Export and analysis features
+├── docs/
+│   ├── user-guide.md       # Detailed user guide
+│   ├── customization.md    # Customization instructions
+│   └── screenshots/        # Application screenshots
+├── examples/
+│   ├── sample-data.json    # Sample literature data
+│   └── research-templates/ # Template configurations
+└── CONTRIBUTING.md         # Contribution guidelines
+```
+
+## 🛠️ Customization
+
+The tracker is designed to be easily customizable for different research domains:
+
+### Adding New Theoretical Frameworks
+Edit the framework options in `js/app.js`:
+```javascript
+const frameworks = [
+    'Collins Domains of Power',
+    'Critical Race Theory',
+    'Your Custom Framework'
+];
+```
+
+### Modifying Research Domains
+Update the domain categories in the configuration:
+```javascript
+const researchDomains = [
+    'Structural',
+    'Disciplinary', 
+    'Cultural',
+    'Interpersonal',
+    'Your Custom Domain'
+];
+```
+
+### Styling Customization
+Modify colors and themes in `css/styles.css`:
+```css
+:root {
+    --primary-color: #667eea;
+    --secondary-color: #764ba2;
+    --accent-color: #38a169;
+}
+```
+
+## 📊 Use Cases
+
+This tool is particularly useful for:
+
+- **Dissertation Research**: Organize literature for comprehensive reviews
+- **Systematic Reviews**: Track sources across multiple theoretical frameworks
+- **Grant Applications**: Demonstrate thorough literature coverage
+- **Research Collaboration**: Share organized literature databases
+- **Academic Writing**: Generate bibliographies and identify gaps
+
+## 🎓 Academic Focus Areas
+
+While designed for general use, this tracker includes specialized features for:
+
+- **Intersectionality Research**: Multi-framework source organization
+- **Critical Race Theory**: Built-in CRT framework categorization
+- **Autoethnographic Studies**: Methodology-specific tracking
+- **Social Justice Research**: Power domain analysis capabilities
+
+## 📈 Data Management
+
+### Export Options
+- **CSV Export**: Full database export for external analysis
+- **Bibliography Generation**: Formatted reference lists
+- **Gap Analysis**: Automated research gap identification
+- **Statistics Dashboard**: Real-time source distribution metrics
+
+### Data Persistence
+- **Local Storage**: Automatic saving in browser storage
+- **JSON Export/Import**: Backup and restore functionality
+- **Collaborative Features**: Share configurations and data sets
+
+## 🤝 Contributing
+
+We welcome contributions! Please see [CONTRIBUTING.md](CONTRIBUTING.md) for guidelines.
+
+### Development Setup
+```bash
+# Clone the repository
+git clone https://github.com/yourusername/literature-review-tracker.git
+
+# No build process required - pure HTML/CSS/JS
+# Simply edit files and refresh browser to see changes
+```
+
+### Reporting Issues
+Please use the GitHub issue tracker to report bugs or request features.
+
+## 📄 License
+
+This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
+
+## 🙏 Acknowledgments
+
+- Inspired by academic research needs in interdisciplinary studies
+- Built with accessibility and usability in mind
+- Designed for researchers working across multiple theoretical frameworks
+
+## 📞 Support
+
+- **Documentation**: See the [docs/](docs/) folder for detailed guides
+- **Issues**: Report bugs via GitHub Issues
+- **Discussions**: Use GitHub Discussions for questions and ideas
+
+---
+
+**Note**: This tool stores data locally in your browser. For long-term storage, regularly export your data using the CSV export feature.

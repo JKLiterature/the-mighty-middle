@@ -1,0 +1,209 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="A comprehensive web-based tool for organizing and tracking academic literature for research projects">
+    <meta name="keywords" content="literature review, academic research, bibliography, citation management">
+    <meta name="author" content="Literature Review Tracker">
+    
+    <title>Literature Review Tracker</title>
+    
+    <!-- CSS -->
+    <link rel="stylesheet" href="css/styles.css">
+    
+    <!-- Favicons -->
+    <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Ctext y='.9em' font-size='90'%3E📚%3C/text%3E%3C/svg%3E">
+</head>
+<body>
+    <header class="header">
+        <h1>Literature Review Tracker</h1>
+        <p>Organize and track academic literature for your research projects</p>
+    </header>
+    
+    <main>
+        <section class="research-questions" aria-labelledby="research-question-heading">
+            <h2 id="research-question-heading">Primary Research Question</h2>
+            <div contenteditable="true" class="editable-question" role="textbox" aria-label="Edit your research question">
+                Enter your primary research question here...
+            </div>
+            <button onclick="saveResearchQuestion()" class="save-question-btn" aria-label="Save research question">
+                Save Question
+            </button>
+        </section>
+        
+        <section class="controls" aria-labelledby="controls-heading">
+            <h2 id="controls-heading" class="sr-only">Filter and Search Controls</h2>
+            <div class="filter-section">
+                <label for="frameworkFilter">Filter by Framework:</label>
+                <select id="frameworkFilter" aria-describedby="framework-help">
+                    <option value="">All Frameworks</option>
+                    <option value="Collins">Collins' Domains of Power</option>
+                    <option value="AsianCrit">Asian American Critical Race Theory</option>
+                    <option value="MMM">Model Minority Myth</option>
+                    <option value="Autoethnography">Autoethnography</option>
+                    <option value="Intersectionality">Intersectionality</option>
+                </select>
+                <small id="framework-help" class="help-text">Filter sources by theoretical framework</small>
+                
+                <label for="relevanceFilter">Filter by Relevance:</label>
+                <select id="relevanceFilter" aria-describedby="relevance-help">
+                    <option value="">All Relevance Levels</option>
+                    <option value="High">High</option>
+                    <option value="Medium">Medium</option>
+                    <option value="Low">Low</option>
+                </select>
+                <small id="relevance-help" class="help-text">Filter by research relevance level</small>
+                
+                <label for="searchInput">Search:</label>
+                <input type="text" id="searchInput" placeholder="Search authors, titles, keywords..." 
+                       aria-describedby="search-help">
+                <small id="search-help" class="help-text">Search across all fields</small>
+                
+                <button onclick="applyFilters()" aria-describedby="filter-help">Apply Filters</button>
+                <button onclick="clearFilters()" class="secondary-btn">Clear Filters</button>
+                <small id="filter-help" class="help-text">Apply or clear all active filters</small>
+            </div>
+        </section>
+        
+        <section class="stats" aria-labelledby="stats-heading">
+            <h2 id="stats-heading" class="sr-only">Literature Statistics</h2>
+            <div class="stat-item">
+                <div class="stat-number" id="totalSources" aria-label="Total number of sources">0</div>
+                <div>Total Sources</div>
+            </div>
+            <div class="stat-item">
+                <div class="stat-number" id="highRelevance" aria-label="Number of high relevance sources">0</div>
+                <div>High Relevance</div>
+            </div>
+            <div class="stat-item">
+                <div class="stat-number" id="theoreticalSources" aria-label="Number of theoretical sources">0</div>
+                <div>Theoretical Sources</div>
+            </div>
+            <div class="stat-item">
+                <div class="stat-number" id="empiricalSources" aria-label="Number of empirical sources">0</div>
+                <div>Empirical Sources</div>
+            </div>
+        </section>
+        
+        <section class="table-container" aria-labelledby="literature-table-heading">
+            <h2 id="literature-table-heading" class="sr-only">Literature Database</h2>
+            <div class="table-wrapper" role="region" aria-label="Literature review table" tabindex="0">
+                <table id="literatureTable" role="table">
+                    <thead>
+                        <tr role="row">
+                            <th scope="col" style="width: 100px;">Relevance to Research</th>
+                            <th scope="col" style="width: 150px;">Connection to Research Question</th>
+                            <th scope="col" style="width: 200px;">Key Concepts/Findings</th>
+                            <th scope="col" style="width: 180px;">Domain of Power (Collins)</th>
+                            <th scope="col" style="width: 200px;">Notes & Quotes</th>
+                            <th scope="col" style="width: 100px;">Page/Chapter References</th>
+                        </tr>
+                    </thead>
+                    <tbody id="tableBody">
+                        <!-- Sample data will be loaded by JavaScript -->
+                        <tr class="add-row">
+                            <td><input type="text" id="newCitation" placeholder="Author, A. (Year). Title" aria-label="Citation"></td>
+                            <td><input type="number" id="newYear" placeholder="2024" min="1900" max="2025" aria-label="Publication year"></td>
+                            <td>
+                                <select id="newType" aria-label="Source type">
+                                    <option value="">Select Type</option>
+                                    <option value="Theoretical">Theoretical</option>
+                                    <option value="Empirical">Empirical</option>
+                                    <option value="Methodological">Methodological</option>
+                                    <option value="Literature Review">Literature Review</option>
+                                </select>
+                            </td>
+                            <td>
+                                <select id="newFramework" aria-label="Theoretical framework">
+                                    <option value="">Select Framework</option>
+                                    <option value="Collins">Collins' Domains of Power</option>
+                                    <option value="AsianCrit">Asian American Critical Race Theory</option>
+                                    <option value="MMM">Model Minority Myth</option>
+                                    <option value="Autoethnography">Autoethnography</option>
+                                    <option value="Intersectionality">Intersectionality</option>
+                                </select>
+                            </td>
+                            <td>
+                                <select id="newRelevance" aria-label="Research relevance">
+                                    <option value="">Select Relevance</option>
+                                    <option value="High">High</option>
+                                    <option value="Medium">Medium</option>
+                                    <option value="Low">Low</option>
+                                </select>
+                            </td>
+                            <td><textarea id="newConnection" placeholder="How does this connect to your research question?" aria-label="Connection to research question"></textarea></td>
+                            <td><textarea id="newConcepts" placeholder="Key concepts, findings, or arguments" aria-label="Key concepts and findings"></textarea></td>
+                            <td><input type="text" id="newDomain" placeholder="Structural/Disciplinary/Cultural/Interpersonal" aria-label="Domain of power"></td>
+                            <td><textarea id="newNotes" placeholder="Important quotes, page numbers, notes" aria-label="Notes and quotes"></textarea></td>
+                            <td><input type="text" id="newPages" placeholder="pp. 1-25, Ch. 3" aria-label="Page references"></td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </section>
+        
+        <section class="controls" style="text-align: center; margin-top: 10px;">
+            <button onclick="addNewEntry()" class="primary-btn" aria-describedby="add-entry-help">Add New Entry</button>
+            <button onclick="clearNewEntry()" class="secondary-btn">Clear New Entry</button>
+            <small id="add-entry-help" class="help-text">Add the entry above to your literature database</small>
+        </section>
+        
+        <section class="export-section" aria-labelledby="export-heading">
+            <h2 id="export-heading">Export & Analysis Tools</h2>
+            <div class="export-buttons">
+                <button onclick="exportToCSV()" aria-describedby="csv-help">Export to CSV</button>
+                <button onclick="generateBibliography()" aria-describedby="bib-help">Generate Bibliography</button>
+                <button onclick="analyzeGaps()" aria-describedby="gaps-help">Analyze Research Gaps</button>
+                <button onclick="saveData()" class="secondary-btn" aria-describedby="save-help">Save Data</button>
+                <button onclick="loadData()" class="secondary-btn" aria-describedby="load-help">Load Data</button>
+            </div>
+            <div class="export-help">
+                <small id="csv-help" class="help-text">Download your data as a CSV file</small>
+                <small id="bib-help" class="help-text">Generate a formatted bibliography</small>
+                <small id="gaps-help" class="help-text">Analyze gaps in your literature coverage</small>
+                <small id="save-help" class="help-text">Save current data to browser storage</small>
+                <small id="load-help" class="help-text">Load previously saved data</small>
+            </div>
+        </section>
+    </main>
+    
+    <footer>
+        <p>&copy; 2025 Literature Review Tracker. Open source project under MIT License.</p>
+        <p>
+            <a href="https://github.com/yourusername/literature-review-tracker" target="_blank" rel="noopener">
+                View on GitHub
+            </a> | 
+            <a href="docs/user-guide.md" target="_blank">User Guide</a> | 
+            <a href="CONTRIBUTING.md" target="_blank">Contribute</a>
+        </p>
+    </footer>
+    
+    <!-- Hidden file input for data import -->
+    <input type="file" id="fileInput" accept=".json,.csv" style="display: none;">
+    
+    <!-- JavaScript -->
+    <script src="js/app.js"></script>
+    <script src="js/filters.js"></script>
+    <script src="js/export.js"></script>
+    
+    <!-- Service Worker for offline functionality -->
+    <script>
+        if ('serviceWorker' in navigator) {
+            window.addEventListener('load', function() {
+                navigator.serviceWorker.register('/sw.js')
+                    .then(function(registration) {
+                        console.log('ServiceWorker registration successful');
+                    })
+                    .catch(function(err) {
+                        console.log('ServiceWorker registration failed: ', err);
+                    });
+            });
+        }
+    </script>
+</body>
+</html> style="width: 200px;">Citation</th>
+                            <th scope="col" style="width: 100px;">Year</th>
+                            <th scope="col" style="width: 120px;">Type</th>
+                            <th scope="col" style="width: 150px;">Theoretical Framework</th>
+                            <th scope="col"
