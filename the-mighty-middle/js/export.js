@@ -1161,8 +1161,8 @@ function exportToJSON() {
             metadata: {
                 version: '1.0',
                 exported: new Date().toISOString(),
-                tool: 'Literature Review Tracker',
-                researchQuestion: currentResearchQuestion || ''
+                tool: 'The Mighty Middle - Literature Review Tracker',
+                researchQuestion: 'How have I experienced, internalized, navigated, and resisted the model minority myth as an Asian American professional with a \'solid\' rather than \'spectacular\' achievement record, and what does this reveal about how domains of power operate for the majority of Asian Americans in professional contexts?'
             },
             entries: allRows.map(row => ({
                 id: row.id,
@@ -1207,7 +1207,7 @@ function generateCitationReport() {
             overview: {
                 totalSources: dataToAnalyze.length,
                 generatedDate: new Date().toLocaleDateString(),
-                researchQuestion: currentResearchQuestion || 'Not specified'
+                researchQuestion: 'How have I experienced, internalized, navigated, and resisted the model minority myth as an Asian American professional with a \'solid\' rather than \'spectacular\' achievement record, and what does this reveal about how domains of power operate for the majority of Asian Americans in professional contexts?'
             },
             statistics: generateCitationStatistics(dataToAnalyze),
             sources: dataToAnalyze.sort((a, b) => (a.citation || '').localeCompare(b.citation || ''))
@@ -1682,7 +1682,7 @@ function generateSelectedCitationReport(data) {
         overview: {
             totalSources: data.length,
             generatedDate: new Date().toLocaleDateString(),
-            researchQuestion: currentResearchQuestion || 'Not specified'
+            researchQuestion: 'How have I experienced, internalized, navigated, and resisted the model minority myth as an Asian American professional with a \'solid\' rather than \'spectacular\' achievement record, and what does this reveal about how domains of power operate for the majority of Asian Americans in professional contexts?'
         },
         statistics: generateCitationStatistics(data),
         sources: data.sort((a, b) => (a.citation || '').localeCompare(b.citation || ''))
