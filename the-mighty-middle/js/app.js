@@ -6,12 +6,10 @@
 // Global variables
 let allRows = [];
 let filteredRows = [];
-let currentResearchQuestion = '';
 
 // Configuration
 const CONFIG = {
     STORAGE_KEY: 'literature_tracker_data',
-    QUESTION_KEY: 'literature_tracker_question',
     MAX_EXPORT_ROWS: 10000,
     AUTOSAVE_INTERVAL: 30000, // 30 seconds
 };
@@ -88,9 +86,6 @@ document.addEventListener('DOMContentLoaded', function() {
  * Initialize core application components
  */
 function initializeApplication() {
-    // Load research question
-    loadResearchQuestion();
-    
     // Initialize data arrays
     if (allRows.length === 0) {
         loadSampleData();
@@ -118,12 +113,6 @@ function setupEventListeners() {
     const clearButton = document.querySelector('[onclick="clearNewEntry()"]');
     if (clearButton) {
         clearButton.addEventListener('click', clearNewEntry);
-    }
-    
-    // Research question saving
-    const saveQuestionBtn = document.querySelector('.save-question-btn');
-    if (saveQuestionBtn) {
-        saveQuestionBtn.addEventListener('click', saveResearchQuestion);
     }
     
     // Enter key handling for forms
@@ -527,24 +516,13 @@ function deleteEntry(entryId) {
  * Save and load research question
  */
 function saveResearchQuestion() {
-    const questionElement = document.querySelector('.editable-question');
-    if (questionElement) {
-        currentResearchQuestion = questionElement.textContent.trim();
-        localStorage.setItem(CONFIG.QUESTION_KEY, currentResearchQuestion);
-        showNotification('Research question saved!', 'success');
-        announceToScreenReader('Research question saved');
-    }
+    // Research question is now fixed, no need for saving functionality
+    showNotification('Research question is fixed to guide your literature review', 'info');
 }
 
 function loadResearchQuestion() {
-    const saved = localStorage.getItem(CONFIG.QUESTION_KEY);
-    if (saved) {
-        currentResearchQuestion = saved;
-        const questionElement = document.querySelector('.editable-question');
-        if (questionElement) {
-            questionElement.textContent = saved;
-        }
-    }
+    // Research question is now fixed in HTML, no need to load from storage
+    console.log('Research question is fixed in the interface');
 }
 
 /**
@@ -742,6 +720,5 @@ function announceToScreenReader(message) {
 // Export functions for global access
 window.addNewEntry = addNewEntry;
 window.clearNewEntry = clearNewEntry;
-window.saveResearchQuestion = saveResearchQuestion;
 window.saveData = saveData;
 window.loadData = loadData;
